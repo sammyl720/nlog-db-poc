@@ -3,18 +3,13 @@ using NLog;
 
 EnsureDatabase();
 
-NLog.Common.InternalLogger.LogToConsole = true;
-NLog.Common.InternalLogger.LogLevel = LogLevel.Debug;
-
-LogManager.LoadConfiguration("nlog.config");
-
 var logger = LogManager.GetCurrentClassLogger();
 
 LogAuthAttempt(logger, "user1@example.com", "user-123", "Login");
 LogAuthAttempt(logger, "user2@example.com", null, "Register");
 LogAuthAttempt(logger, "user3@example.com", "user-789", "PasswordChange");
 
-Console.WriteLine("Logging complete. Check authlogs.db for results.");
+Console.WriteLine("Logging complete. Check auth-logs.db for results.");
 
 static void EnsureDatabase()
 {
